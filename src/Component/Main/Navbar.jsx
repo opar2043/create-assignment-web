@@ -26,11 +26,14 @@ const Navbar = () => {
       <NavLink to="/create">
         <li className="px-3 py-1">Create Assignment</li>
       </NavLink>
-      <NavLink to="/add">
+      <NavLink to="/all">
         <li className="px-3 py-1">Add Assignment</li>
       </NavLink>
       <NavLink to="/allpending">
         <li className="px-3 py-1">All Assignments</li>
+      </NavLink>
+      <NavLink to="/mysubmission">
+        <li className="px-3 py-1">My Submission</li>
       </NavLink>
     </>
   );

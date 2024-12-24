@@ -19,6 +19,9 @@ import Edit from './Component/Pages/Edit.jsx';
 import TakeAssignment from './Component/Pages/TakeAssignment.jsx';
 import Assignment from './Component/Main/Assignment.jsx';
 import AllPending from './Component/Pages/AllPending.jsx';
+import Allassignment from './Component/Pages/Allassignment.jsx';
+import MarksPage from './Component/Pages/MarksPage.jsx';
+import MySubmisson from './Component/Pages/MySubmisson.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +38,11 @@ const router = createBrowserRouter([
         path: '/add',
         element: <AddAssignment></AddAssignment>,
         loader: ()=>fetch('http://localhost:5000/assignment')
+      },
+      {
+        path: '/all',
+        element: <Allassignment></Allassignment>,
+        loader: ()=>fetch('http://localhost:5000/allassignment')
       },
       {
         path: '/create',
@@ -59,9 +67,9 @@ const router = createBrowserRouter([
         
       },
       {
-        path: '/take',
+        path: '/take/:id',
         element: <TakeAssignment></TakeAssignment>,
-        // loader:()=> fetch(`http://localhost:5000/assignment`)
+        loader:({params})=> fetch(`http://localhost:5000/assignment`)
       },
       {
         path: '/allpending',
@@ -71,6 +79,17 @@ const router = createBrowserRouter([
       {
         path: '/assignment',
         element: <Assignment></Assignment>
+      },
+      {
+        path: '/marks/:id',
+        element: <MarksPage></MarksPage>,
+        loader: ({params})=> fetch(`http://localhost:5000/docs`)
+        
+     
+      },
+      {
+        path: '/mysubmission',
+        element: <MySubmisson></MySubmisson>
       }
     ]
   },

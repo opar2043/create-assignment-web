@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AuthContex } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLoaderData, useLocation } from 'react-router-dom';
+import { IoShieldCheckmarkSharp } from "react-icons/io5"
 
 const TakeAssignment = () => {
 
@@ -11,11 +12,7 @@ const TakeAssignment = () => {
 
 
   const data = useLoaderData();
-  // const [docData , setdocData] = useState(data) || []
-  // console.log(data,'data take');
-
-
-  // console.log(assign,'hiiii');
+ 
   const {
     title,
     description,
@@ -24,6 +21,8 @@ const TakeAssignment = () => {
     difficulty,
     dueDate,
   _id} = assign || {}
+
+  console.log(assign,'hiiiiii');
 
   const {user} = useContext(AuthContex)
   console.log(user);
@@ -37,10 +36,12 @@ const TakeAssignment = () => {
       title,
       marks,
       name: user?.displayName,
-     email : user?.email,
+      email : user?.email,
       quote,
       docs,
-      staus: 'pending'
+      staus: 'pending',
+      getMarks: 0,
+      feedback: ''
     }
 
       fetch('http://localhost:5000/docs',{
