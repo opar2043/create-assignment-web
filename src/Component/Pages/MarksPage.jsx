@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Swal from "sweetalert2";
 
@@ -7,6 +7,7 @@ const MarksPage = () => {
  
   const {id} = useParams()
   console.log(id);
+  const navigate = useNavigate()
 
 function handleMarks(e){
         e.preventDefault();
@@ -36,7 +37,7 @@ function handleMarks(e){
               icon: "success",
               draggable: true
             });
-            console.log(data);
+            navigate('/allpending')
           }
         })
       }
@@ -69,7 +70,7 @@ function handleMarks(e){
           <input
             type="number"
             className="border rounded w-full px-3 py-2 mt-1"
-            placeholder="Marks"
+            placeholder={"Marks"}
             name="getMarks"
             required
           />

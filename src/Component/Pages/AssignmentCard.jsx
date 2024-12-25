@@ -2,12 +2,14 @@ import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { CiViewBoard } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContex } from "../Provider/AuthProvider";
 
-const AssignmentCard = ({assign}) => {
-  console.log(assign);
-  const [data,setData]= useState()
+const AssignmentCard = ({assign,setAssignments}) => {
+  // console.log(assign);
+  const {user} = useContext(AuthContex)
+  // const [data,setData]= useState()
   const {
     title,
     description,
@@ -15,22 +17,37 @@ const AssignmentCard = ({assign}) => {
     thumbnail,
     difficulty,
     dueDate,
+    email,
   _id} = assign || {}
 
 
   const handleDelete = () => {
+
+    if (user?.email !== email) {
+      Swal.fire({
+        title: "Permission Denied!",
+        text: "You can't delete assignments created by others!",
+        icon: "error",
+        draggable: true,
+      });
+      return;
+    }
+     
+
     fetch(`http://localhost:5000/assignment/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data,'deleted');
+        console.log(data,'delte 1');
         if (data.deletedCount>0) {
            Swal.fire({
                     title: " Assignment Deleted Successfully!",
                     icon: "success",
                     draggable: true
-                  });        
+                  }); 
+                  console.log(data,'delte 2');
+                  setAssignments(data)
         } 
       })
       .catch((error) => console.error("Error deleting assignment:", error));
@@ -48,7 +65,8 @@ const AssignmentCard = ({assign}) => {
   </figure>
   <div className="card-body">
     <h2 className="card-title text-2xl"><span className="font-bold text-2xl">Title:</span>{title}</h2>
-    <p className="font-semibold my-2"><span className="font-bold text-lg">Difficulty:</span> {difficulty}</p>
+    <p className="font-semibold "><span className="font-bold text-lg">Email:</span> {email}</p>
+    <p className="font-semibold "><span className="font-bold text-lg">Difficulty:</span> {difficulty}</p>
     <div className="grid grid-cols-3 gap-2">
   
       <NavLink to={`/view/${_id}`} state={{assign}}>

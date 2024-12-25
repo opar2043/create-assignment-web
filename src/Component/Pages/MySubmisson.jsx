@@ -43,6 +43,7 @@ const MySubmisson = () => {
                 <th className="border border-gray-300 px-4 py-2">Marks</th>
                 <th className="border border-gray-300 px-4 py-2">Status</th>
                 <th className="border border-gray-300 px-4 py-2">Obtained Marks</th>
+                <th className="border border-gray-300 px-4 py-2">FeedBack</th>
               </tr>
             </thead>
             {/* Table Body */}
@@ -68,6 +69,7 @@ const MySubmisson = () => {
                       <span className="italic text-gray-500">Not Given Yet</span>
                     )}
                   </td>
+                  <td className="italic text-gray-500 text-center border border-gray-300">{d?.feedback || 'Not Given Yet'}</td>
                 </tr>
               ))}
             </tbody>

@@ -22,6 +22,7 @@ import AllPending from './Component/Pages/AllPending.jsx';
 import Allassignment from './Component/Pages/Allassignment.jsx';
 import MarksPage from './Component/Pages/MarksPage.jsx';
 import MySubmisson from './Component/Pages/MySubmisson.jsx';
+import Privateroute from './Component/Provider/Privateroute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/create',
-        element: <CreateAssignment></CreateAssignment>
+        element: <Privateroute><CreateAssignment></CreateAssignment></Privateroute>
       },
       {
         path: '/login',
@@ -58,13 +59,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/view/:id',
-        element: <ViewAssignment></ViewAssignment>
+        element: <Privateroute><ViewAssignment></ViewAssignment></Privateroute>
       },
       {
         path: '/edit/:id',
-        element: <Edit></Edit>,
+        element: <Privateroute><Edit></Edit></Privateroute>,
         loader:({paramas})=> fetch(`http://localhost:5000/assignment`)
-        
       },
       {
         path: '/take/:id',
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/allpending',
-        element: <AllPending></AllPending>,
+        element: <Privateroute><AllPending></AllPending>,</Privateroute>,
         loader:()=> fetch(`http://localhost:5000/docs`)
       },
       {
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/mysubmission',
-        element: <MySubmisson></MySubmisson>
+        element: <Privateroute><MySubmisson></MySubmisson></Privateroute>
       }
     ]
   },

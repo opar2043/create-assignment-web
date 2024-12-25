@@ -4,6 +4,7 @@ import { AuthContex } from '../Provider/AuthProvider';
 import './Navbar.css';
 import { Tooltip } from 'react-tooltip';
 
+
 const Navbar = () => {
   const { user, handleLogout } = useContext(AuthContex);
   const [theme, setTheme] = useState(false);
@@ -23,18 +24,22 @@ const Navbar = () => {
       <NavLink to="/">
         <li className="px-3 py-1">Home</li>
       </NavLink>
-      <NavLink to="/create">
+      {
+        user &&  <NavLink to="/create">
         <li className="px-3 py-1">Create Assignment</li>
       </NavLink>
+      }
       <NavLink to="/all">
-        <li className="px-3 py-1">Add Assignment</li>
+        <li className="px-3 py-1">Current Assignment</li>
       </NavLink>
       <NavLink to="/allpending">
         <li className="px-3 py-1">All Assignments</li>
       </NavLink>
-      <NavLink to="/mysubmission">
+      {
+        user &&   <NavLink to="/mysubmission">
         <li className="px-3 py-1">My Submission</li>
       </NavLink>
+      }
     </>
   );
 
@@ -65,7 +70,10 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
+        <div className='flex items-center justify-center gap-2'>
+        <img src="https://i.ibb.co.com/Q8vdK4W/fav.png" className='w-6 ' />
         <a className="btn btn-ghost font-extrabold text-xl">Assignment Crub</a>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal md:-ml-48 px-1 gap-2">{links}</ul>

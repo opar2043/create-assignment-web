@@ -15,6 +15,7 @@ const TakeAssignment = () => {
  
   const {
     title,
+    email,
     description,
     marks,
     thumbnail,
@@ -35,6 +36,7 @@ const TakeAssignment = () => {
     const note = {
       title,
       marks,
+      creator:email,
       name: user?.displayName,
       email : user?.email,
       quote,
@@ -43,6 +45,17 @@ const TakeAssignment = () => {
       getMarks: 0,
       feedback: ''
     }
+
+    if (user?.email === email) { // Compare user email with the creator email
+      Swal.fire({
+        title: "Sorry! You can't add your own assignment",
+        icon: "error", // Changed icon to "error" for better context
+        draggable: true
+      });
+      return;
+    }
+
+   console.log(note,'user info');
 
       fetch('http://localhost:5000/docs',{
           method: "POST",

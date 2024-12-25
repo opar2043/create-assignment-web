@@ -11,6 +11,7 @@ const ViewAssignment = () => {
   console.log(assign,'from view');
   const {
     title,
+    email,
     description,
     marks,
     thumbnail,
@@ -39,6 +40,9 @@ const ViewAssignment = () => {
           <div className="mb-4">
             <p className="text-gray-600">
               <span className="font-semibold">Title:</span>{title}
+            </p>
+            <p className="text-gray-600">
+              <span className="font-semibold">Email:</span>{email}
             </p>
             <p className="text-gray-600">
               <span className="font-semibold">Marks:</span> {marks}

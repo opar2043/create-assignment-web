@@ -3,7 +3,8 @@ import { AuthContex } from "./AuthProvider";
 import { NavLink } from "react-router-dom";
 import lotti from '../../assets/animation-registration.json'
 import Swal from "sweetalert2";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
+
 
 const Register = () => {
 
@@ -18,6 +19,18 @@ const Register = () => {
     const photo = form.photo.value;
     const pass = form.pass.value;
 
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+
+    if (!passwordRegex.test(pass)) {
+      Swal.fire({
+        title: "Invalid Password!",
+        text: "Password must have an uppercase letter, a lowercase letter, and be at least 6 characters long.",
+        icon: "error",
+        draggable: true,
+      });
+      return;
+    }
+
      handleRegister(email,pass)
      .then((userCredential) => {
       const create = userCredential.user;
@@ -26,7 +39,8 @@ const Register = () => {
       updateUserProfile({
         displayName: name, photoURL: photo
       })
-      .then(()=>{
+      .then((data)=>{
+        setUser(data)
         console.log('update user');
         Swal.fire({
                   title: "Registered Successfully!",
@@ -40,10 +54,14 @@ const Register = () => {
      
       const errorMessage = error.message;
       console.log(errorMessage);
+       Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: "Sorry! Can't Logged In!",
+              showConfirmButton: false,
+              timer: 1500
+            });
     });
-
-    
-
 
     const userObj = {
       name,
@@ -61,14 +79,17 @@ const Register = () => {
     <div>
         <div className="hero bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row-reverse">
-    <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Register now!</h1>
-    <div>
-         {/* <Lottie animationData={lotti}></Lottie> */}
+
+    <div className="text-center p-6 lg:text-left">
+      <h1 className="text-5xl font-bold text-red-600">Register now!</h1>
+    <div className="w-2/3 py-6 mx-auto">
+        <Lottie animationData={lotti}></Lottie>
     </div>
     </div>
+
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <form className="card-body" onSubmit={handleSubmit}>
+      <h2 className="text-3xl font-bold text-center text-green-700">Create Your Account</h2>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Name</span>
@@ -110,3 +131,5 @@ const Register = () => {
 }
 
 export default Register
+
+

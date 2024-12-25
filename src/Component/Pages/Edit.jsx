@@ -1,11 +1,12 @@
 import React from 'react'
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Edit = () => {
 
   const {id} = useParams();
   console.log(id);
+  const navigate = useNavigate()
 
   const [data,setData] = useLoaderData();
   const {
@@ -15,6 +16,7 @@ const Edit = () => {
     thumbnail,
     difficulty,
     dueDate,
+    email,
   _id} = data || {}
 
   console.log(data);
@@ -54,7 +56,7 @@ const Edit = () => {
               icon: "success",
               draggable: true
             });
-            console.log(data);
+            navigate('/all')
           }
         })
       }

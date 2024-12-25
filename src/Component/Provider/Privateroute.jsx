@@ -1,20 +1,24 @@
 import { useContext } from "react"
 import { AuthContex } from "./AuthProvider"
-import { Navigate } from "react-router-dom"
+import { Navigate, useLocation } from "react-router-dom"
+import Spiner from "../Pages/Spiner"
 
 
 const Privateroute = ({children}) => {
-    
+    const location = useLocation()
+    console.log(location,'private route');
+    console.log(location?.pathname);  
+     
     const {user,loading} = useContext(AuthContex)
 
-    if(loading){
-        <span className="loading loading-spinner loading-3xl text-center mx-auto"></span>
+    if (loading) {
+      return <Spiner />;
     }
 
     if(user){
          return children 
     }
-  return <Navigate to={'/'}></Navigate>
+  return <Navigate to={'/login'} state={  location?.pathname }></Navigate>
 
 }
 

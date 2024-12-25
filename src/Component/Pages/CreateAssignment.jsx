@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Swal from 'sweetalert2';
+import { AuthContex } from '../Provider/AuthProvider';
 
 const CreateAssignment = () => {
+  const {user} = useContext(AuthContex)
 
   function handleFormData(e){
     e.preventDefault();
 
     const form = e.target;
     const  title = form.title.value;
+    const  email = form.email.value;
     const  description = form.description.value;
     const  marks = form.marks.value;
     const  thumbnail = form.thumbnail.value;
@@ -15,6 +18,7 @@ const CreateAssignment = () => {
     const  dueDate = form.dueDate.value;
 
     const assignment ={
+      email,
       title,
       description,
       marks,
@@ -23,6 +27,7 @@ const CreateAssignment = () => {
       dueDate
     }
 
+    console.log(assignment);
 
     fetch('http://localhost:5000/assignment',{
       method: "POST",
@@ -58,6 +63,20 @@ const CreateAssignment = () => {
             id="title"
             name="title"
             placeholder="Enter assignment title"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        {/* Email  */}
+        <div className="mb-4">
+          <label htmlFor="title" className="block text-sm font-medium mb-2">
+           Email
+          </label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            defaultValue={user?.email}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
           />
         </div>

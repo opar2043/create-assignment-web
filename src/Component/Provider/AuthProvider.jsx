@@ -27,13 +27,7 @@ const AuthProvider = ({children}) => {
       return signOut(auth)
     }
 
-    //   Google Log in
-    // const googleProvider = new GoogleAuthProvider()
-
-    // function handleGoogleLogin(){
-    //   setLoading(true)
-    //   return signInWithPopup(auth,googleProvider)
-    // }
+   
 
     const googleProvider = new GoogleAuthProvider();
     function handleGoogleLogin() {
@@ -72,7 +66,9 @@ const AuthProvider = ({children}) => {
        handleGoogleLogin,
        handleLogout,
        user,setUser,
-       updateUserProfile
+       updateUserProfile,
+       loading,
+       setLoading
     }
 
   return <AuthContex.Provider value={obj}>

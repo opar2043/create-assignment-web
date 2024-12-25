@@ -1,13 +1,19 @@
 import { useContext } from "react";
 import { AuthContex } from "./AuthProvider";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import Lottie from "lottie-react";
+import login from '../../assets/public/login.json'
 
 const Login = () => {
 
   const { handleSignin,handleGoogleLogin,user,setUser} = useContext(AuthContex)
    const navigate = useNavigate()
+   const location = useLocation();
+
+   const from = location?.state
+
+  //  console.log(from,'from');
 
   function handleLogin(e){
     e.preventDefault()
@@ -29,23 +35,20 @@ const Login = () => {
                 icon: "success",
                 draggable: true
               }) 
-              navigate('/')
+              navigate(from || '/')
     })
     .catch((error) => {    
       const errorMessage = error.message;
       console.log(errorMessage);
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Sorry! Something Happen Wrong!",
+        showConfirmButton: false,
+        timer: 1500
+      });
     
     });
-
-    // const userObj = {
-    //   name,
-    //   email,
-    //   // photo,
-    //   // pass
-    // }
-
-    
-    // console.log(userObj);
   }
 
 
@@ -53,15 +56,17 @@ const Login = () => {
     <div>
        <div className="hero bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row-reverse">
-    <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Login now!</h1>
-      <p className="py-6">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
-      </p>
+
+  <div className="text-center p-6 ">
+      <h1 className="text-5xl font-bold">Log In now!</h1>
+    <div className="w-2/3 py-6 mx-auto">
+        <Lottie animationData={login}></Lottie>
     </div>
+    </div>
+
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <form className="card-body" onSubmit={handleLogin}>
+      <h2 className="text-3xl font-bold text-center text-blue-700">Login Your Account</h2>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>

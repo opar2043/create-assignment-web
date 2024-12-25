@@ -2,6 +2,8 @@ import React from 'react'
 import pic1 from '../../assets/pic-1.webp'
 import pic2 from '../../assets/pic-2.webp'
 import pic3 from '../../assets/pic-3.jpeg'
+import { color, motion } from "motion/react"
+import { redirect } from 'react-router-dom'
 
 const Banner = () => {
   return (
@@ -19,12 +21,37 @@ const Banner = () => {
       {/* Content */}
       <div className="absolute inset-0 flex items-center justify-center text-neutral-content text-center">
         <div className="w-9/12">
-          <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-          <p className="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-            quasi. In deleniti eaque aut repudiandae et a id nisi.
-          </p>
-          <button className="btn btn-primary">Get Started</button>
+              <motion.h1
+                 initial={{ opacity: 0, y: -50 }}
+                 animate={{
+                   opacity: 1,
+                   y: 0,
+                   color: ["red", "Yellow"], 
+                 }}
+                 transition={{
+                   duration: 2,
+                   repeat: Infinity, 
+                   repeatType: "reverse", 
+                 }}
+                 className="text-5xl font-bold mb-4"
+               >
+                Welcome to Assignment Crub
+              </motion.h1>
+          
+              <motion.button
+                  animate={{
+                    background: ["#FFD580", "#FFA07A"] 
+                  }}
+                  transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                  className="btn  text-black"
+                >
+                  Get Started
+                </motion.button>
+
         </div>
       </div>
     </div>
@@ -45,11 +72,22 @@ const Banner = () => {
       {/* Content */}
       <div className="absolute inset-0 flex items-center justify-center text-neutral-content text-center">
         <div className="w-9/12">
-          <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-          <p className="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-            quasi. In deleniti eaque aut repudiandae et a id nisi.
-          </p>
+        <motion.h1
+                 initial={{ opacity: 0, y: -50 }}
+                 animate={{
+                   opacity: 1,
+                   y: 0,
+                   color: ["#FFD580", "#FFA07A"]  
+                 }}
+                 transition={{
+                   duration: 2,
+                   repeat: Infinity, 
+                   repeatType: "reverse", 
+                 }}
+                 className="text-5xl font-bold mb-4"
+               >
+                Make text Your Self
+              </motion.h1>
           
         </div>
       </div>
@@ -69,11 +107,22 @@ const Banner = () => {
       {/* Content */}
       <div className="absolute inset-0 flex items-center justify-center text-neutral-content text-center">
         <div className="w-9/12">
-          <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-          <p className="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-            quasi. In deleniti eaque aut repudiandae et a id nisi.
-          </p>
+        <motion.h1
+                 initial={{ opacity: 0, y: -50 }}
+                 animate={{
+                   opacity: 1,
+                   y: 0,
+                   color: ["red", "Yellow"], 
+                 }}
+                 transition={{
+                   duration: 2,
+                   repeat: Infinity, 
+                   repeatType: "reverse", 
+                 }}
+                 className="text-5xl font-bold mb-4"
+               >
+                Join With New Ides
+              </motion.h1>
           
         </div>
       </div>
