@@ -1,9 +1,14 @@
 import React, { useContext } from 'react'
 import Swal from 'sweetalert2';
 import { AuthContex } from '../Provider/AuthProvider';
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const CreateAssignment = () => {
   const {user} = useContext(AuthContex)
+  const [startDate, setStartDate] = useState(new Date());
 
   function handleFormData(e){
     e.preventDefault();
@@ -29,7 +34,7 @@ const CreateAssignment = () => {
 
     console.log(assignment);
 
-    fetch('http://localhost:5000/assignment',{
+    fetch('https://assignment-crub-fullstack.vercel.app/assignment',{
       method: "POST",
       headers:{
         'content-type': 'application/json',
@@ -143,7 +148,11 @@ const CreateAssignment = () => {
         {/* Due Date */}
         <div className="mb-6">
           <label htmlFor="dueDate" className="block text-sm font-medium mb-2">
-            Due Date
+          <DatePicker
+                className="border p-2 rounded-md"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
           </label>
           <input
             type="date"

@@ -9,7 +9,7 @@ const AllPending = () => {
 
     const [data,setData] = useState([])
      useEffect(()=>{
-      fetch('http://localhost:5000/docs')
+      fetch('https://assignment-crub-fullstack.vercel.app/docs')
       .then(res =>res.json())
       .then(dats => {
         setData(dats)

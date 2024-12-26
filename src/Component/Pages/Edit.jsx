@@ -30,7 +30,7 @@ const Edit = () => {
         const  description = form.description.value;
         const  marks = form.marks.value;
         const  thumbnail = form.thumbnail.value;
-        // const  difficulty = form.difficulty.value;
+        const  difficulty = form.difficulty.value;
         const  dueDate = form.dueDate.value;
     
         const assignment ={
@@ -41,7 +41,7 @@ const Edit = () => {
           difficulty,
           dueDate
         }
-       fetch(`http://localhost:5000/assignment/${_id}`,{
+       fetch(`https://assignment-crub-fullstack.vercel.app/assignment/${_id}`,{
           method: "PUT",
           headers:{
             'content-type': 'application/json',
@@ -128,21 +128,21 @@ const Edit = () => {
         </div>
 
         {/* Difficulty Level */}
-        <div className="mb-4">
+      { difficulty && <div className="mb-4">
           <label htmlFor="difficulty" className="block text-sm font-medium mb-2">
             Difficulty Level
           </label>
           <select
             id="difficulty"
             name="difficulty"
-            // defaultValue={difficulty}
+            defaultValue={difficulty}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
           >
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select>
-        </div>
+        </div>}
 
         {/* Due Date */}
         <div className="mb-6">

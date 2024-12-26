@@ -44,7 +44,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-gradient-to-r from-cyan-500 to-blue-500 sticky top-0 z-10 text-white md:px-12 px-3">
+    <div className="navbar bg-gradient-to-r from-gray-300 to-white sticky top-0 z-10  md:px-12 px-3">
       <div className="navbar-start w-full">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -65,7 +65,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu text-black menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu font-semibold text-black menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>
@@ -76,7 +76,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal md:-ml-48 px-1 gap-2">{links}</ul>
+        <ul className="menu menu-horizontal font-semibold md:-ml-48 px-1 gap-2">{links}</ul>
       </div>
       <div className="navbar-end gap-2">
         {user ? (
@@ -94,7 +94,7 @@ const Navbar = () => {
               data-tooltip-content={user?.displayName || 'Guest'}
             >
               <div className="w-10 rounded-full">
-                <img src={user?.photoURL || '/default-avatar.png'} alt="User Avatar" />
+                <img src={user?.photoURL || 'https://i.ibb.co.com/bd2TzLB/shadow.jpg'} alt="User Avatar" />
               </div>
             </div>
             <Tooltip id="user-tooltip" />

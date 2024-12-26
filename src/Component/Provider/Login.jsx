@@ -7,13 +7,35 @@ import login from '../../assets/public/login.json'
 
 const Login = () => {
 
-  const { handleSignin,handleGoogleLogin,user,setUser} = useContext(AuthContex)
+  const { handleSignin,signInGoogle,setUser} = useContext(AuthContex)
    const navigate = useNavigate()
    const location = useLocation();
 
    const from = location?.state
 
   //  console.log(from,'from');
+
+    function handleGoogleLogin(){
+      signInGoogle()
+      .then((result) => {
+        setUser(result.user)
+        Swal.fire({
+          title: "Logged In!",
+          icon: "success",
+          draggable: true
+        }) 
+        navigate(from || '/')
+      }).catch((error) => {  
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Sorry! Something Happen Wrong!",
+          showConfirmButton: false,
+          timer: 1500
+        });
+     
+      });
+    }
 
   function handleLogin(e){
     e.preventDefault()
@@ -31,7 +53,7 @@ const Login = () => {
       console.log(logged);
       setUser(logged)
       Swal.fire({
-                title: "Created Assignment Successfully!",
+                title: "Logged In!",
                 icon: "success",
                 draggable: true
               }) 
@@ -49,6 +71,8 @@ const Login = () => {
       });
     
     });
+
+    from.reset()
   }
 
 
@@ -86,7 +110,7 @@ const Login = () => {
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary mb-3">LogIn</button>
-          <button className="btn btn-outline" onClick={()=>handleGoogleLogin()}>Google LogIn</button>
+          <button className="btn btn-outline" onClick={handleGoogleLogin}>Google LogIn</button>
         </div>
         <p className="text-center font-bold">Don't Have An Account? <NavLink className={'text-red-500 text-lg'} to={'/register'}>Register</NavLink></p>
       </form>

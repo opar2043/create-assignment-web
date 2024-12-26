@@ -33,17 +33,17 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: ()=>fetch('http://localhost:5000/assignment')
+        loader: ()=>fetch('https://assignment-crub-fullstack.vercel.app/assignment')
       },
       {
         path: '/add',
         element: <AddAssignment></AddAssignment>,
-        loader: ()=>fetch('http://localhost:5000/assignment')
+        loader: ()=>fetch('https://assignment-crub-fullstack.vercel.app/assignment')
       },
       {
         path: '/all',
         element: <Allassignment></Allassignment>,
-        loader: ()=>fetch('http://localhost:5000/allassignment')
+        loader: ()=>fetch('https://assignment-crub-fullstack.vercel.app/allassignment')
       },
       {
         path: '/create',
@@ -64,17 +64,17 @@ const router = createBrowserRouter([
       {
         path: '/edit/:id',
         element: <Privateroute><Edit></Edit></Privateroute>,
-        loader:({paramas})=> fetch(`http://localhost:5000/assignment`)
+        loader:({paramas})=> fetch(`https://assignment-crub-fullstack.vercel.app/assignment`)
       },
       {
         path: '/take/:id',
         element: <TakeAssignment></TakeAssignment>,
-        loader:({params})=> fetch(`http://localhost:5000/assignment`)
+        loader:({params})=> fetch(`https://assignment-crub-fullstack.vercel.app/assignment`)
       },
       {
         path: '/allpending',
         element: <Privateroute><AllPending></AllPending>,</Privateroute>,
-        loader:()=> fetch(`http://localhost:5000/docs`)
+        loader:()=> fetch(`https://assignment-crub-fullstack.vercel.app/docs`)
       },
       {
         path: '/assignment',
@@ -83,7 +83,7 @@ const router = createBrowserRouter([
       {
         path: '/marks/:id',
         element: <MarksPage></MarksPage>,
-        loader: ({params})=> fetch(`http://localhost:5000/docs`)
+        loader: ({params})=> fetch(`https://assignment-crub-fullstack.vercel.app/docs`)
         
      
       },

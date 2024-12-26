@@ -22,7 +22,7 @@ function handleMarks(e){
                feedback,
                staus: 'complete'
         }
-       fetch(`http://localhost:5000/docs/${id}`,{
+       fetch(`https://assignment-crub-fullstack.vercel.app/docs/${id}`,{
           method: "PUT",
           headers:{
             'content-type': 'application/json',

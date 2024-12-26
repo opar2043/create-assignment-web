@@ -34,7 +34,7 @@ const AssignmentCard = ({assign,setAssignments}) => {
     }
      
 
-    fetch(`http://localhost:5000/assignment/${_id}`, {
+    fetch(`https://assignment-crub-fullstack.vercel.app/assignment/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

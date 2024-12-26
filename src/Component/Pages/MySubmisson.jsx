@@ -6,7 +6,7 @@ const MySubmisson = () => {
     
         const [marks , setmarks] = useState([])
               useEffect(() => {
-            fetch(`http://localhost:5000/docs`)
+            fetch(`https://assignment-crub-fullstack.vercel.app/docs`)
               .then((res) => res.json())
               .then((data) => {
                 setmarks(data);

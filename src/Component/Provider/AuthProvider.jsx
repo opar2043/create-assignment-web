@@ -1,6 +1,7 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,  signOut, onAuthStateChanged, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import  { createContext, useEffect, useState } from 'react'
 import auth from '../Firebase/Firebase.config';
+import axios from "axios";
 export const AuthContex = createContext(null)
 
 const AuthProvider = ({children}) => {
@@ -27,14 +28,15 @@ const AuthProvider = ({children}) => {
       return signOut(auth)
     }
 
-   
+  //  google provoider
 
-    const googleProvider = new GoogleAuthProvider();
-    function handleGoogleLogin() {
-      setLoading(true);
-      return signInWithPopup(auth, googleProvider)
-    
-    }
+        const googleProvider = new GoogleAuthProvider()
+        function signInGoogle(){
+          setLoading(true)
+          return signInWithPopup(auth,googleProvider)
+        }
+
+   
 
     // Update User Profile
    function updateUserProfile(updatedata){
@@ -45,14 +47,29 @@ const AuthProvider = ({children}) => {
     
     useEffect(()=>{
      const unSub = onAuthStateChanged(auth, (createUser) => {
-        if (createUser) {
+        if (createUser?.email) {
            setUser(createUser)
            console.log(createUser,'here i am user');
-        } else {
+           const user = {email: createUser?.email}
+
+           axios.post('https://assignment-crub-fullstack.vercel.app/jwt', user,{withCredentials: true })
+           .then(res => {
+            console.log(res.data,'log in token');
+            setLoading(false)
+
+           })
+        } 
+        else {
           setUser(null)
-          // console.log(user,'null');
+          axios.post('https://assignment-crub-fullstack.vercel.app/logout',{},{
+            withCredentials: true
+          })
+          .then(res => {
+            setLoading(false)
+            console.log(res.data , "user Logged Out")
+          })
+          
         }
-        setLoading(false)
       });
 
       return ()=> unSub()
@@ -63,7 +80,7 @@ const AuthProvider = ({children}) => {
     const obj = {
        handleRegister,
        handleSignin,
-       handleGoogleLogin,
+       signInGoogle,
        handleLogout,
        user,setUser,
        updateUserProfile,

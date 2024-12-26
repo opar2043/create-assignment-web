@@ -9,15 +9,17 @@ const Allassignment = () => {
     // const [assignments, setAssignments] = useState(Array.isArray(data) ? data : []);
     const [assignments, setAssignments] = useState( []);
     const [filter,setFilter] = useState('')
+    const [search,setSearch] = useState('')
+
     console.log(assignments,'delete');
       useEffect(() => {
-    fetch(`http://localhost:5000/allassignment?filter=${filter}`)
+    fetch(`https://assignment-crub-fullstack.vercel.app/allassignment?filter=${filter}&search=${search}`)
       .then((res) => res.json())
       .then((data) => {
         setAssignments(data);
       })
       .catch((error) => console.error('Error fetching job data:', error));
-  }, [filter]);
+  }, [filter,search]);
 
   function reset(){
      setFilter('')
@@ -40,7 +42,7 @@ const Allassignment = () => {
    {/* text input */}
 
    <label className="input input-bordered flex items-center  gap-2">
-<input type="text" className="grow py-2" placeholder="Search" />
+<input type="text" className="grow py-2" placeholder="Search" onBlur={e => setSearch(e.target.value)} />
 <button className=" btn-active btn-neutral py-1.5 px-5 text-sm font-semibold border rounded-md">Neutral</button>
 </label>
 <button className="btn btn-active btn-neutral btn-wide" onClick={reset}>Reset</button>

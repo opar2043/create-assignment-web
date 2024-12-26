@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContex } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
-import { useLoaderData, useLocation } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { IoShieldCheckmarkSharp } from "react-icons/io5"
 
 const TakeAssignment = () => {
@@ -9,6 +9,8 @@ const TakeAssignment = () => {
   const location = useLocation()
   const {assign} = location.state || {}
   console.log(assign,'kire');
+
+  const naviagte = useNavigate()
 
 
   const data = useLoaderData();
@@ -57,7 +59,7 @@ const TakeAssignment = () => {
 
    console.log(note,'user info');
 
-      fetch('http://localhost:5000/docs',{
+      fetch('https://assignment-crub-fullstack.vercel.app/docs',{
           method: "POST",
           headers:{
             'content-type': 'application/json',
@@ -72,8 +74,11 @@ const TakeAssignment = () => {
               icon: "success",
               draggable: true
             });
+            Navigate('/')
           }
         })
+
+        e.target.reset()
     console.log(note);
   }
 

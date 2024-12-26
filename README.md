@@ -1,8 +1,15 @@
-# React + Vite
+# Assignment Crub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a web site where you can create your own assignment where student can submit their own assignment and teacher cam give marks to them. its a well designed website and beneficial too.
 
-Currently, two official plugins are available:
+Technology i used .............
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Tailwind 
+- React Js
+- React NPM Package
+- Firebase Authintication
+- Mongo DB for Database
+- JWT for Backend Authentication
+- Live Link
+
+https://teal-meerkat-08607f.netlify.app
