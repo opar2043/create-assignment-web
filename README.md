@@ -11,8 +11,6 @@ The **Assignment Submission Platform** is a user-friendly web application design
 - **Backend:** MongoDB, JWT Authentication  
 - **Authentication:** Firebase  
 
-### 🖼️ Screenshot  
-*(Add a real screenshot here when available)*  
 
 ### 🚀 Features  
 ✅ **Create Assignments** – Teachers can create and manage assignments  
