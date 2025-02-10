@@ -78,19 +78,19 @@ const Login = () => {
 
   return (
     <div>
-       <div className="hero bg-base-200 min-h-screen">
+       <div className="hero bg-pink-200 min-h-screen rounded">
   <div className="hero-content flex-col lg:flex-row-reverse">
 
   <div className="text-center p-6 ">
-      <h1 className="text-5xl font-bold">Log In now!</h1>
+      <h1 className="text-5xl font-bold text-pink-600">Log In now!</h1>
     <div className="w-2/3 py-6 mx-auto">
         <Lottie animationData={login}></Lottie>
     </div>
     </div>
 
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="card  bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <form className="card-body" onSubmit={handleLogin}>
-      <h2 className="text-3xl font-bold text-center text-blue-700">Login Your Account</h2>
+      <h2 className="text-3xl font-bold text-center text-pink-500">Login Your Account</h2>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
@@ -109,10 +109,10 @@ const Login = () => {
           </label>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary mb-3">LogIn</button>
-          <button className="btn btn-outline" onClick={handleGoogleLogin}>Google LogIn</button>
+          <button className="btn btn-secondary mb-3">LogIn</button>
+          <button className="btn btn-outline text-pink-500" onClick={handleGoogleLogin}>Google LogIn</button>
         </div>
-        <p className="text-center font-bold">Don't Have An Account? <NavLink className={'text-red-500 text-lg'} to={'/register'}>Register</NavLink></p>
+        <p className="text-center font-bold">Don't Have An Account? <NavLink className={'text-pink-500 text-lg'} to={'/register'}>Register</NavLink></p>
       </form>
     </div>
   </div>
