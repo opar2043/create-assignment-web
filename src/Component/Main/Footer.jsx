@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="footer bg-neutral text-neutral-content p-10">
+    <footer className="footer bg-slate-900 text-neutral-content p-10">
     <aside className='md:w-1/3'>
     <img src="https://i.ibb.co.com/Q8vdK4W/fav.png" className='w-10 ' />
       <div>

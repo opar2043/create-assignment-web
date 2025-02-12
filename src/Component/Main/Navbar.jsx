@@ -162,7 +162,7 @@ const Navbar = () => {
         <div className="flex items-center justify-center gap-2">
           <img
             src="https://i.ibb.co.com/Q8vdK4W/fav.png"
-            className="w-6 rounded-full shadow-lg border-2 border-white"
+            className="w-6 rounded-full shadow-lg text-white border-2 border-white"
           />
           <a className="btn btn-ghost font-extrabold text-xl text-white hover:text-yellow-500 transition-colors duration-300">
             Assignment Crub

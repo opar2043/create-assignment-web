@@ -1,6 +1,6 @@
 const Assignment = () => {
     return (
-      <div className="my-12 w-11/12 mx-auto">
+      <div className="my-12 ">
         {/* Header */}
         <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">
           Welcome to the Assignment Hub

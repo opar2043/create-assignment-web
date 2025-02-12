@@ -53,7 +53,7 @@ const FAQ = () => {
     //   </div>
     // </div>
 
-    <div className="w-11/12 mx-auto p-6 my-10 bg-pink-50 rounded-lg shadow-xl ">
+    <div className=" p-6 my-10 bg-pink-50 rounded-lg shadow-xl ">
       <h2 className="text-4xl text-center font-bold text-pink-600 mb-8">
         Wanna Know About Our Website?
       </h2>
